@@ -19,4 +19,22 @@ liste_lettres_trouvees=[]
 while "*" in mot_etoile and nombre_essais!=0:
     lettre = input("Entrez une lettre")
 
-    verif(lettre,mot,mot_etoile,liste_lettres_trouvees,liste_alphabet,nombre_essais)
+    if verifAlphabet(lettre,liste_alphabet):
+        if verifLettreTrouvees(lettre,liste_lettres_trouvees):
+            print("La lettre a déjà été trouvée !")
+        else:
+            if verifMot(lettre,mot,mot_etoile,liste_lettres_trouvees):
+                print(" ")
+            else:
+                nombre_essais=faux(nombre_essais)
+    else:
+        print("La lettre entrée n'est pas contenue dans l'alphabet")
+
+    print("Il vous reste",nombre_essais,"essais")
+
+    print(mot_etoile)
+
+if "*" not in mot_etoile:
+    print("Vous avez gagné, le mot était",mot)
+else:
+    print("Perdu le mot était",mot)
